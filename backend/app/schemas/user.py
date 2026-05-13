@@ -36,5 +36,5 @@ class UserResponse(BaseModel):
     username: str 
 
 class TokenResponse(BaseModel):
-    access_token = str 
+    access_token: str 
     user: UserResponse 

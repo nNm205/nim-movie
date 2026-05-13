@@ -3,7 +3,11 @@ from sqlalchemy import text
 from app.database.session import engine
 from app.core.logger import logger
 
+from app.api.v1.router import api_router
+
 app = FastAPI()
+
+app.include_router(api_router, prefix="/api/v1")
 
 @app.on_event("startup")
 def startup_event():
