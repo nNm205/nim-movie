@@ -5,6 +5,8 @@ from pydantic import (
     model_validator
 ) 
 
+from typing import Optional 
+
 class UserRegister(BaseModel):
     email: EmailStr
 
@@ -39,3 +41,7 @@ class UserResponse(BaseModel):
 class TokenResponse(BaseModel):
     access_token: str 
     user: UserResponse 
+
+class UserUpdate(BaseModel):
+    username: Optional[str] = None 
+    email: Optional[str] = None 
