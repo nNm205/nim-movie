@@ -7,6 +7,9 @@ class Settings(BaseSettings):
     JWT_ALGORITHM: str 
     ACCESS_TOKEN_EXPIRE_MINUTES: int 
 
+    TMDB_URL: str 
+    TMDB_API_KEY: str 
+
     model_config = SettingsConfigDict(
         env_file=".env",
         extra="ignore"
