@@ -6,12 +6,14 @@ from app.core.logger import logger
 
 from app.auth.security import (
     create_access_token, 
-    hash_password
+    hash_password,
+    verify_password
 )
 
 from app.schemas.user import (
     TokenResponse, 
     UserRegister, 
+    UserLogin,
     UserResponse
 )
 
@@ -92,3 +94,53 @@ def register_user(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="Internal server error"
         ) 
+
+def login_user(
+    user_data: UserLogin,
+    db: Session 
+) -> TokenResponse:
+    logger.info(f"Login attempt for email: {user_data.email}")
+
+    # Find user by email 
+    result = db.execute(
+        select(User).where(
+            User.email == user_data.email 
+        )
+    )
+
+    user = result.scalar_one_or_none() 
+    if not user: 
+        logger.warning(f"Login failed - user not found: {user_data.email}")
+
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid email or password"
+        )
+
+    # Verify password
+    is_valid_password = verify_password(user_data.password, user.hashed_password)
+
+    if not is_valid_password:
+        logger.warning(f"Login failed - invalid password for: {user_data.email}")
+
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid email or password"
+        )
+
+    logger.info(f"User logged in successfully: {user.email}")
+
+    # Generate JWT token 
+    access_token = create_access_token({
+        "sub": user.email,
+        "user_id": user.id 
+    })
+
+    return TokenResponse(
+        access_token=access_token,
+        user=UserResponse(
+            id=user.id,
+            email=user.email,
+            username=user.username 
+        )
+    )

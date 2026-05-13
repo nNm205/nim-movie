@@ -9,10 +9,14 @@ from app.database.session import get_db
 
 from app.schemas.user import (
     TokenResponse,
-    UserRegister
+    UserRegister,
+    UserLogin
 )
 
-from app.services.auth_service import register_user 
+from app.services.auth_service import (
+    register_user,
+    login_user
+) 
 
 router = APIRouter(prefix="/auth", tags=["Auth"])
 
@@ -29,3 +33,17 @@ def register(
         user_data=user_data, 
         db=db 
 )
+
+@router.post(
+    "/login",
+    response_model=TokenResponse,
+    status_code=status.HTTP_200_OK
+)
+def login(
+    user_data: UserLogin,
+    db: Session = Depends(get_db)
+) -> TokenResponse:
+    return login_user(
+        user_data=user_data,
+        db=db 
+    )  
