@@ -1,0 +1,51 @@
+# Web Framework
+fastapi
+uvicorn
+python-multipart
+
+# Database
+sqlalchemy
+alembic
+asyncpg
+psycopg2-binary
+
+# Validation
+pydantic
+pydantic-settings
+
+# Security & Auth
+bcrypt
+python-jose
+passlib
+PyJWT
+
+# HTTP & Async
+aiohttp
+requests
+
+# Environment
+python-dotenv
+
+# Caching & Queue
+redis
+celery
+
+# AI/ML Libraries
+langchain
+openai
+anthropic
+scikit-learn
+pandas
+numpy
+pinecone-client
+
+# Testing
+pytest
+pytest-asyncio
+httpx
+
+# Code Quality
+black
+flake8
+mypy
+isort
