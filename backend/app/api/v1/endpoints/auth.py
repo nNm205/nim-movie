@@ -10,13 +10,17 @@ from app.database.session import get_db
 from app.schemas.user import (
     TokenResponse,
     UserRegister,
-    UserLogin
+    UserLogin,
+    UserResponse 
 )
 
 from app.services.auth_service import (
     register_user,
     login_user
 ) 
+
+from app.models.user import User 
+from app.auth.dependencies import get_current_user
 
 router = APIRouter(prefix="/auth", tags=["Auth"])
 
@@ -47,3 +51,16 @@ def login(
         user_data=user_data,
         db=db 
     )  
+
+@router.get(
+    "/me",
+    response_model=UserResponse
+)
+def get_me(
+    current_user: User = Depends(get_current_user)
+) -> UserResponse:
+    return UserResponse(
+        id=current_user.id,
+        email=current_user.email,
+        username=current_user.username
+    ) 
