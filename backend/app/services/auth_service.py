@@ -81,7 +81,8 @@ def register_user(
             user=UserResponse(
                 id=new_user.id,
                 email=new_user.email,
-                username=new_user.username
+                username=new_user.username,
+                role=new_user.role 
             )
         )
     
@@ -141,6 +142,7 @@ def login_user(
         user=UserResponse(
             id=user.id,
             email=user.email,
-            username=user.username 
+            username=user.username,
+            role=user.role 
         )
     )

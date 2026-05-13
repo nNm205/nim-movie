@@ -46,3 +46,19 @@ def get_current_user(
     logger.info(f"Authenticated user: {user.email}")
 
     return user 
+
+def get_current_admin(
+    current_user: User = Depends(get_current_user)
+) -> User:
+    logger.info(f"Admin access check for user_id={current_user.id}, role={current_user.role}")
+
+    if current_user.role != "admin":
+        logger.warning(f"Forbidden admin access attempt - user_id={current_user.id}, role={current_user.role}")
+
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Admin access required"
+        )
+    
+    logger.info(f"Admin access granted for user_id={current_user.id}")
+    return current_user 
