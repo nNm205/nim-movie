@@ -1,0 +1,124 @@
+@import "tailwindcss";
+
+@theme {
+  --color-netflix-dark: #141414;
+  --color-netflix-red: #e50914;
+  --color-netflix-lightred: #f40612;
+
+  --color-netflix-gray: #2f2f2f;
+  --color-netflix-lightgray: #454545;
+
+  --shadow-netflix: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --shadow-netflix-hover: 0 8px 30px rgba(0, 0, 0, 0.7);
+
+  --font-sans: Inter, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-netflix-dark text-white font-sans;
+  color-scheme: dark;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-netflix-gray;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-netflix-red rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-netflix-lightred;
+}
+
+/* Global button styles */
+.btn-primary {
+  @apply px-6 py-3 bg-netflix-red text-white font-bold rounded cursor-pointer transition-all duration-300;
+}
+
+.btn-primary:hover {
+  @apply bg-netflix-lightred;
+}
+
+.btn-secondary {
+  @apply px-6 py-3 bg-netflix-gray text-white font-bold rounded cursor-pointer transition-all duration-300;
+}
+
+.btn-secondary:hover {
+  @apply bg-netflix-lightgray;
+}
+
+.btn-ghost {
+  @apply px-4 py-2 text-white font-semibold rounded cursor-pointer transition-all duration-300;
+}
+
+.btn-ghost:hover {
+  @apply bg-netflix-gray;
+}
+
+/* Loading spinner */
+.spinner {
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid #e50914;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Movie card */
+.movie-card {
+  @apply rounded-lg overflow-hidden cursor-pointer transition-all duration-300;
+  box-shadow: var(--shadow-netflix);
+}
+
+.movie-card:hover {
+  box-shadow: var(--shadow-netflix-hover);
+}
+
+.movie-card img {
+  @apply w-full h-64 object-cover transition-all duration-300;
+}
+
+.movie-card:hover img {
+  transform: scale(1.1);
+}
+
+/* Fade animation */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
