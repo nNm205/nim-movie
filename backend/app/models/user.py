@@ -1,6 +1,6 @@
 from datetime import datetime, timezone
 from sqlalchemy import Boolean, DateTime, Integer, String 
-from sqlalchemy.orm import Mapped, mapped_column 
+from sqlalchemy.orm import Mapped, mapped_column, relationship 
 from app.database.base import Base 
 
 class User(Base):
@@ -50,4 +50,10 @@ class User(Base):
         DateTime(timezone=True),
         default=lambda: datetime.now(timezone.utc),
         onupdate=lambda: datetime.now(timezone.utc),
+    )
+
+    watchlists = relationship(
+        "Watchlist",
+        back_populates="user",
+        cascade="all, delete-orphan"
     )
