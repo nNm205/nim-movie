@@ -1,20 +1,48 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
+import PrivateRoute from "./components/Auth/PrivateRoute";
+
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
-import Header from "./components/Common/Header";
-import Footer from "./components/Common/Footer";
+import HomePage from "./pages/HomePage";
+import MovieDetailPage from "./pages/MovieDetailPage";
+import WatchPage from "./pages/WatchPage";
+import SearchResultPage from "./pages/SearchResultsPage";
 
 function App() {
   return (
-    <div className="min-h-screen flex flex-col bg-zinc-950 overflow-hidden">
-      <Header />
-      <main className="pt-24 pb-96 min-h-screen bg-gradient-to-b from-zinc-950 via-zinc-900 to-zinc-950">
-        <Routes>
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-        </Routes>
-      </main>
-      <Footer />
+    <div className="min-h-screen bg-zinc-950">
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/search" element={<SearchResultPage />} />
+        <Route
+          path="/"
+          element={
+            <PrivateRoute>
+              <HomePage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/movies/:id"
+          element={
+            <PrivateRoute>
+              <MovieDetailPage />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/watch/:id"
+          element={
+            <PrivateRoute>
+              <WatchPage />
+            </PrivateRoute>
+          }
+        />
+
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
     </div>
   );
 }
