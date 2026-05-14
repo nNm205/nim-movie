@@ -35,7 +35,15 @@ const Header = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    console.log("Search: ", searchQuery);
+
+    const keyword = searchQuery.trim();
+
+    if (!keyword) return;
+
+    navigate(`/search?q=${encodeURIComponent(keyword)}`);
+
+    setIsSearchOpen(false);
+    setIsMenuOpen(false);
   };
 
   const handleLogout = () => {
