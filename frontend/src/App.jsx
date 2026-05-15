@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage";
 import MovieDetailPage from "./pages/MovieDetailPage";
 import WatchPage from "./pages/WatchPage";
 import SearchResultPage from "./pages/SearchResultsPage";
+import ProfilePage from "./pages/ProfilePage";
 
 function App() {
   return (
@@ -31,12 +32,19 @@ function App() {
             </PrivateRoute>
           }
         />
-
         <Route
           path="/watch/:id"
           element={
             <PrivateRoute>
               <WatchPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <PrivateRoute>
+              <ProfilePage />
             </PrivateRoute>
           }
         />
