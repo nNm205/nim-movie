@@ -98,6 +98,13 @@ const Header = () => {
           >
             Thể loại
           </Link>
+          <Link
+            to="/watchlist"
+            onClick={() => setIsUserMenuOpen(false)}
+            className="flex items-center gap-3 px-4 py-3 text-zinc-300 hover:text-white hover:bg-zinc-800 transition-all"
+          >
+            <span>Danh sách xem sau</span>
+          </Link>
         </nav>
 
         <div className="hidden md:flex items-center space-x-3">
@@ -325,6 +332,13 @@ const Header = () => {
               className="px-4 py-3 rounded-lg text-zinc-300 hover:text-white hover:bg-zinc-800/50 transition-all duration-200 font-medium"
             >
               Thể loại
+            </Link>
+            <Link
+              to="/watchlist"
+              onClick={() => setIsMenuOpen(false)}
+              className="px-4 py-3 rounded-lg text-zinc-300 hover:text-white hover:bg-zinc-800/50 transition-all duration-200 font-medium"
+            >
+              Danh sách xem sau
             </Link>
 
             <div className="pt-2 border-t border-zinc-800">

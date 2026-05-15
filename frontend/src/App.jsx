@@ -8,6 +8,7 @@ import MovieDetailPage from "./pages/MovieDetailPage";
 import WatchPage from "./pages/WatchPage";
 import SearchResultPage from "./pages/SearchResultsPage";
 import ProfilePage from "./pages/ProfilePage";
+import WatchlistPage from "./pages/WatchlistPage";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/search" element={<SearchResultPage />} />
+        <Route path="/watchlist" element={<WatchlistPage />} />
         <Route
           path="/"
           element={
