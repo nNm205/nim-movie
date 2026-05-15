@@ -18,9 +18,9 @@ export const API_ENDPOINTS = {
   // GET_BY_GENRE: (genre) => `/movies/genre/${genre}`,
 
   // Watchlist
-  GET_WATCHLIST: "/watchlist",
-  ADD_WATCHLIST: "/watchlist",
-  REMOVE_WATCHLIST: (movieId) => `/watchlist/${movieId}`,
+  GET_WATCHLIST: "/users/watchlist",
+  ADD_TO_WATCHLIST: (movieId) => `/users/watchlist/${movieId}`,
+  REMOVE_FROM_WATCHLIST: (movieId) => `/users/watchlist/${movieId}`,
 
   // Reviews
   GET_MOVIE_REVIEWS: (movieId) => `/movies/${movieId}/reviews`,
