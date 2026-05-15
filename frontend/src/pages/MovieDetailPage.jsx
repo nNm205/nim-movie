@@ -4,6 +4,7 @@ import Layout from "../components/Common/Layout";
 import { movieService } from "../services/movieService";
 import { getPosterUrl, getBackdropUrl } from "../utils/tmdb";
 import ReviewSection from "../components/Review/ReviewSection";
+import WatchlistButton from "../components/Watchlist/WatchlistButton";
 
 const MovieDetailPage = () => {
   const { id } = useParams();
@@ -124,6 +125,8 @@ const MovieDetailPage = () => {
                 >
                   Xem ngay
                 </Link>
+
+                <WatchlistButton movieId={movie.id} />
               </div>
             </div>
           </div>
