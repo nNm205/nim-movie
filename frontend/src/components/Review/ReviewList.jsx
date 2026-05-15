@@ -47,6 +47,8 @@ const ReviewList = ({ reviews, currentUser, onEdit, onDelete }) => {
           currentUser={currentUser}
           onEdit={onEdit}
           onDelete={onDelete}
+          showActions={true}
+          showMovieLink={false}
         />
       ))}
     </div>
