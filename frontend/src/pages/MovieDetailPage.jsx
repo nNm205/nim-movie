@@ -51,9 +51,9 @@ const MovieDetailPage = () => {
 
           <button
             onClick={() => navigate("/")}
-            className="bg-red-600 px-5 py-2 rounded mt-5"
+            className="mb-8 bg-zinc-800 hover:bg-zinc-700 text-white px-4 py-2.5 rounded-lg transition duration-200 font-medium text-sm"
           >
-            Quay lại
+            ← Quay lại
           </button>
         </div>
       </Layout>
@@ -76,9 +76,9 @@ const MovieDetailPage = () => {
         <div className="max-w-screen-2xl mx-8 px-4 md:px-8 lg:px-12 -mt-52 relative z-10 pb-32">
           <button
             onClick={() => navigate("/")}
-            className="mb-8 bg-black/70 hover:bg-red-600 px-5 py-2 rounded-lg transition duration-300"
+            className="mb-8 bg-zinc-800 hover:bg-zinc-700 text-white px-4 py-2.5 rounded-lg transition duration-200 font-medium text-sm"
           >
-            Quay lại
+            ← Quay lại
           </button>
 
           <div className="grid md:grid-cols-3 gap-10 lg:gap-14">
