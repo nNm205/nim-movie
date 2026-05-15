@@ -9,6 +9,7 @@ import WatchPage from "./pages/WatchPage";
 import SearchResultPage from "./pages/SearchResultsPage";
 import ProfilePage from "./pages/ProfilePage";
 import WatchlistPage from "./pages/WatchlistPage";
+import SettingsPage from "./pages/SettingsPage";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/search" element={<SearchResultPage />} />
         <Route path="/watchlist" element={<WatchlistPage />} />
+        <Route path="/settings" element={<SettingsPage />} />
         <Route
           path="/"
           element={
