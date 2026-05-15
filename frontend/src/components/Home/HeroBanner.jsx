@@ -23,10 +23,10 @@ const HeroBanner = ({ movie, loading }) => {
           <p className="text-gray-300 text-lg mb-8">{movie.overview}</p>
 
           <button
-            onClick={() => navigate(`/movie/${movie.id}`)}
+            onClick={() => navigate(`/movies/${movie.id}`)}
             className="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded font-bold"
           >
-            View Detail
+            Xem thêm
           </button>
         </div>
       </div>

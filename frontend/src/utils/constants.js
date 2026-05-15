@@ -23,10 +23,11 @@ export const API_ENDPOINTS = {
   REMOVE_WATCHLIST: (movieId) => `/watchlist/${movieId}`,
 
   // Reviews
-  GET_REVIEWS: (movieId) => `/reviews/movie/${movieId}`,
-  CREATE_REVIEW: "/reviews",
+  GET_MOVIE_REVIEWS: (movieId) => `/movies/${movieId}/reviews`,
+  CREATE_REVIEW: (movieId) => `/movies/${movieId}/reviews`,
   UPDATE_REVIEW: (reviewId) => `/reviews/${reviewId}`,
   DELETE_REVIEW: (reviewId) => `/reviews/${reviewId}`,
+  GET_USER_REVIEWS: "/users/reviews",
 };
 
 export const SORT_OPTIONS = [

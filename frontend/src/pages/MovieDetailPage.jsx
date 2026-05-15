@@ -3,6 +3,7 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import Layout from "../components/Common/Layout";
 import { movieService } from "../services/movieService";
 import { getPosterUrl, getBackdropUrl } from "../utils/tmdb";
+import ReviewSection from "../components/Review/ReviewSection";
 
 const MovieDetailPage = () => {
   const { id } = useParams();
@@ -10,6 +11,10 @@ const MovieDetailPage = () => {
 
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -72,7 +77,7 @@ const MovieDetailPage = () => {
             onClick={() => navigate(-1)}
             className="mb-8 bg-black/70 hover:bg-red-600 px-5 py-2 rounded-lg transition duration-300"
           >
-            Back
+            Quay lại
           </button>
 
           <div className="grid md:grid-cols-3 gap-10 lg:gap-14">
@@ -117,25 +122,14 @@ const MovieDetailPage = () => {
                   to={`/watch/${movie.id}`}
                   className="bg-red-600 hover:bg-red-700 px-8 py-4 rounded-lg font-semibold transition duration-300"
                 >
-                  Watch Now
+                  Xem ngay
                 </Link>
-
-                {movie.homepage && (
-                  <a
-                    href={movie.homepage}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="bg-zinc-800 hover:bg-zinc-700 px-8 py-4 rounded-lg font-semibold transition duration-300"
-                  >
-                    Official Site
-                  </a>
-                )}
               </div>
             </div>
           </div>
 
           <div className="mt-24">
-            <h2 className="text-3xl font-bold mb-8">Cast</h2>
+            <h2 className="text-3xl font-bold mb-8">Diễn viên</h2>
 
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-5">
               {movie.cast?.slice(0, 12).map((actor) => (
@@ -151,6 +145,10 @@ const MovieDetailPage = () => {
                 </div>
               ))}
             </div>
+          </div>
+
+          <div className="mt-24 border-t border-zinc-800 pt-16">
+            <ReviewSection movieId={movie.id} />
           </div>
         </div>
       </div>
