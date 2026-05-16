@@ -84,26 +84,25 @@ const Header = () => {
             to="/trending"
             className="px-4 py-2 rounded-lg text-zinc-300 hover:text-white hover:bg-zinc-800/50 transition-all duration-200 font-medium"
           >
-            Xu hướng
+            Phim Xu hướng
           </Link>
           <Link
-            to="/new"
+            to="/popular"
             className="px-4 py-2 rounded-lg text-zinc-300 hover:text-white hover:bg-zinc-800/50 transition-all duration-200 font-medium"
           >
-            Phim mới
+            Phim phổ biến
           </Link>
           <Link
-            to="/category"
+            to="/top-rated"
             className="px-4 py-2 rounded-lg text-zinc-300 hover:text-white hover:bg-zinc-800/50 transition-all duration-200 font-medium"
           >
-            Thể loại
+            Phim xếp hạng cao
           </Link>
           <Link
             to="/watchlist"
-            onClick={() => setIsUserMenuOpen(false)}
-            className="flex items-center gap-3 px-4 py-3 text-zinc-300 hover:text-white hover:bg-zinc-800 transition-all"
+            className="px-4 py-2 rounded-lg text-zinc-300 hover:text-white hover:bg-zinc-800/50 transition-all duration-200 font-medium"
           >
-            <span>Danh sách xem sau</span>
+            Danh sách xem sau
           </Link>
         </nav>
 

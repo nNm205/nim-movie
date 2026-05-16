@@ -7,6 +7,8 @@ import { movieService } from "../services/movieService";
 const HomePage = () => {
   const [heroMovie, setHeroMovie] = useState(null);
   const [trendingMovies, setTrendingMovies] = useState([]);
+  const [popularMovies, setPopularMovies] = useState([]);
+  const [topRatedMovies, setTopRatedMovies] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -14,17 +16,28 @@ const HomePage = () => {
       try {
         setLoading(true);
 
-        const response = await movieService.getTrending();
+        const [trendingResponse, popularResponse, topRatedResponse] =
+          await Promise.all([
+            movieService.getTrending(),
+            movieService.getPopular(),
+            movieService.getTopRated(),
+          ]);
 
-        const movies = response.items || [];
+        const trending = trendingResponse.items || [];
+        const popular = popularResponse.items || [];
+        const topRated = topRatedResponse.items || [];
 
-        setTrendingMovies(movies);
+        setTrendingMovies(trending);
+        setPopularMovies(popular);
+        setTopRatedMovies(topRated);
 
-        if (movies.length > 0) {
-          setHeroMovie(movies[0]);
+        if (trending.length > 0) {
+          const randomMovie =
+            trending[Math.floor(Math.random() * trending.length)];
+          setHeroMovie(randomMovie);
         }
       } catch (error) {
-        console.error("Error fetching movies:", error);
+        console.error("Error fetching homepage movies:", error);
       } finally {
         setLoading(false);
       }
@@ -35,16 +48,30 @@ const HomePage = () => {
 
   return (
     <Layout>
-      <div className="bg-black text-white">
+      <div className="bg-black min-h-screen text-white overflow-hidden">
         <HeroBanner movie={heroMovie} loading={loading} />
 
-        <section className="max-w-screen-2xl mx-8 px-4 py-12">
-          <MovieCarousel
-            title="Trending Movies"
-            movies={trendingMovies}
-            loading={loading}
-          />
-        </section>
+        <div className="relative z-20 mt-10">
+          <section className="space-y-14 px-4 md:px-8 lg:px-12 pb-16">
+            <MovieCarousel
+              title="Trending Now"
+              movies={trendingMovies}
+              loading={loading}
+            />
+
+            <MovieCarousel
+              title="Popular Movies"
+              movies={popularMovies}
+              loading={loading}
+            />
+
+            <MovieCarousel
+              title="Top Rated"
+              movies={topRatedMovies}
+              loading={loading}
+            />
+          </section>
+        </div>
       </div>
     </Layout>
   );

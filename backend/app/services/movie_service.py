@@ -3,6 +3,62 @@ from app.core.logger import logger
 
 tmdb_client = TMDbClient()
 
+def get_discover_movies(
+    page: int = 1,
+    sort_by: str = "popularity.desc"
+): 
+    logger.info(f"Discover movies | page={page} | sort_by={sort_by}")
+
+    data = tmdb_client.get(
+        "/discover/movie", 
+        params={
+            "page": page,
+            "sort_by": sort_by 
+        }
+    )
+
+    return {
+        "items": data["results"],
+        "total": data["total_results"],
+        "page": data["page"],
+        "pageSize": len(data["results"]),
+        "totalPages": data["total_pages"]
+    }
+
+def get_popular_movies(page: int = 1):
+    logger.info(f"Fetching popular movies | page={page}")
+
+    data = tmdb_client.get(
+        "/movie/popular",
+        params={
+            "page": page
+        }
+    )
+
+    return {
+        "items": data["results"],
+        "total": data["total_results"],
+        "page": data["page"],
+        "pageSize": len(data["results"]),
+        "totalPages": data["total_pages"]
+    }
+
+def get_top_rated_movies(page: int = 1):
+    logger.info(f"Fetching top rated movies | page={page}")
+
+    data = tmdb_client.get(
+        "/movie/top_rated",
+        params={"page": page}
+    )
+
+    return {
+        "items": data["results"],
+        "total": data["total_results"],
+        "page": data["page"],
+        "pageSize": len(data["results"]),
+        "totalPages": data["total_pages"]
+    }
+
 def get_trending_movies(
     page: int = 1,
     time_window: str = "week"

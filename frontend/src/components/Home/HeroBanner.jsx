@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { getBackdropUrl } from "../../utils/tmdb";
 
 const HeroBanner = ({ movie, loading }) => {
   const navigate = useNavigate();
@@ -9,9 +10,9 @@ const HeroBanner = ({ movie, loading }) => {
 
   return (
     <div
-      className="relative h-[600px] bg-cover bg-center"
+      className="relative h-[600px] bg-cover bg-center mt-2"
       style={{
-        backgroundImage: `url(${movie.backdrop_path})`,
+        backgroundImage: `url(${getBackdropUrl(movie.backdrop_path)})`,
       }}
     >
       <div className="absolute inset-0 bg-black/60" />

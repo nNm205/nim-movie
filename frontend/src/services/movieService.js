@@ -1,19 +1,15 @@
 import api from "../utils/api";
 import { API_ENDPOINTS } from "../utils/constants";
 
+const handleError = (error, fallbackMessage) => {
+  console.error(error);
+
+  throw new Error(
+    error.response?.data?.message || error.message || fallbackMessage,
+  );
+};
+
 export const movieService = {
-  // async getMovies(page = 1, limit = 20) {
-  //   try {
-  //     const response = await api.get(API_ENDPOINTS.GET_MOVIES, {
-  //       params: { page, limit },
-  //     });
-
-  //     return response.data;
-  //   } catch (error) {
-  //     throw error.response?.data?.message || "Failed to fetch movies";
-  //   }
-  // },
-
   async getTrending(page = 1, timeWindow = "week") {
     try {
       const response = await api.get(API_ENDPOINTS.GET_TRENDING, {
@@ -22,28 +18,40 @@ export const movieService = {
 
       return response.data;
     } catch (error) {
-      throw error.response?.data?.message || "Failed to fetch trending movies";
+      handleError(error, "Failed to fetch trending movies");
     }
   },
 
-  // async getByGenre(genre, limit = 10) {
-  //   try {
-  //     const response = await api.get(API_ENDPOINTS.GET_BY_GENRE(genre), {
-  //       params: { limit },
-  //     });
+  async getPopular(page = 1) {
+    try {
+      const response = await api.get(API_ENDPOINTS.GET_POPULAR, {
+        params: { page },
+      });
 
-  //     return response.data;
-  //   } catch (error) {
-  //     throw error.response?.data?.message || `Failed to fetch ${genre} movies`;
-  //   }
-  // },
+      return response.data;
+    } catch (error) {
+      handleError(error, "Failed to fetch popular movies");
+    }
+  },
+
+  async getTopRated(page = 1) {
+    try {
+      const response = await api.get(API_ENDPOINTS.GET_TOP_RATED, {
+        params: { page },
+      });
+
+      return response.data;
+    } catch (error) {
+      handleError(error, "Failed to fetch top rated movies");
+    }
+  },
 
   async getMovieDetail(id) {
     try {
       const response = await api.get(API_ENDPOINTS.GET_MOVIE_DETAIL(id));
       return response.data;
     } catch (error) {
-      throw error.response?.data?.message || "Failed to fetch movie detail";
+      handleError(error, "Failed to fetch movie detail");
     }
   },
 
@@ -55,23 +63,9 @@ export const movieService = {
 
       return response.data;
     } catch (error) {
-      throw error.response?.data?.message || "Failed to search movies";
+      handleError(error, "Failed to search movies");
     }
   },
-
-  // async getRecommended(limit = 10) {
-  //   try {
-  //     const response = await api.get(
-  //       `${API_ENDPOINTS.GET_MOVIES}?sort=-rating&limit=${limit}`,
-  //     );
-
-  //     return response.data;
-  //   } catch (error) {
-  //     throw (
-  //       error.response?.data?.message || "Failed to fetch recommended movies"
-  //     );
-  //   }
-  // },
 
   async getGenres() {
     try {
@@ -79,7 +73,7 @@ export const movieService = {
 
       return response.data;
     } catch (error) {
-      throw error.response?.data?.message || "Failed to fetch genres";
+      handleError(error, "Failed to fetch genres");
     }
   },
 };

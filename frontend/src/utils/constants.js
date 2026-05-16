@@ -1,28 +1,23 @@
 export const API_ENDPOINTS = {
-  // Auth
   AUTH_LOGIN: "/auth/login",
   AUTH_REGISTER: "/auth/register",
   AUTH_LOGOUT: "/auth/logout",
   AUTH_REFRESH: "/auth/refresh-token",
 
-  // Users
   GET_PROFILE: "/users/profile",
   UPDATE_PROFILE: "/users/profile",
 
-  // Movies
-  // GET_MOVIES: "/movies",
   GET_MOVIE_DETAIL: (id) => `/movies/${id}`,
   SEARCH_MOVIES: "/movies/search",
-  GET_TRENDING: "/movies/trending",
   GET_GENRES: "/movies/genres",
-  // GET_BY_GENRE: (genre) => `/movies/genre/${genre}`,
+  GET_TRENDING: "/movies/trending",
+  GET_POPULAR: "/movies/popular",
+  GET_TOP_RATED: "/movies/top-rated",
 
-  // Watchlist
   GET_WATCHLIST: "/users/watchlist",
   ADD_TO_WATCHLIST: (movieId) => `/users/watchlist/${movieId}`,
   REMOVE_FROM_WATCHLIST: (movieId) => `/users/watchlist/${movieId}`,
 
-  // Reviews
   GET_MOVIE_REVIEWS: (movieId) => `/movies/${movieId}/reviews`,
   CREATE_REVIEW: (movieId) => `/movies/${movieId}/reviews`,
   UPDATE_REVIEW: (reviewId) => `/reviews/${reviewId}`,
