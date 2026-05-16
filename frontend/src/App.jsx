@@ -10,6 +10,7 @@ import SearchResultPage from "./pages/SearchResultsPage";
 import ProfilePage from "./pages/ProfilePage";
 import WatchlistPage from "./pages/WatchlistPage";
 import SettingsPage from "./pages/SettingsPage";
+import MovieListPage from "./pages/MovieListPage";
 
 function App() {
   return (
@@ -20,6 +21,10 @@ function App() {
         <Route path="/search" element={<SearchResultPage />} />
         <Route path="/watchlist" element={<WatchlistPage />} />
         <Route path="/settings" element={<SettingsPage />} />
+        <Route path="/movies/trending" element={<MovieListPage />} />
+        <Route path="/movies/popular" element={<MovieListPage />} />
+        <Route path="/movies/top-rated" element={<MovieListPage />} />
+        <Route path="/movies" element={<MovieListPage />} />
         <Route
           path="/"
           element={

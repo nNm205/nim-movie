@@ -10,6 +10,7 @@ export const API_ENDPOINTS = {
   GET_MOVIE_DETAIL: (id) => `/movies/${id}`,
   SEARCH_MOVIES: "/movies/search",
   GET_GENRES: "/movies/genres",
+  GET_MOVIES: "/movies/discover",
   GET_TRENDING: "/movies/trending",
   GET_POPULAR: "/movies/popular",
   GET_TOP_RATED: "/movies/top-rated",

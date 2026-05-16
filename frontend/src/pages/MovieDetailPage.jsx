@@ -75,7 +75,7 @@ const MovieDetailPage = () => {
 
         <div className="max-w-screen-2xl mx-8 px-4 md:px-8 lg:px-12 -mt-52 relative z-10 pb-32">
           <button
-            onClick={() => navigate("/")}
+            onClick={() => navigate(-1)}
             className="mb-8 bg-zinc-800 hover:bg-zinc-700 text-white px-4 py-2.5 rounded-lg transition duration-200 font-medium text-sm"
           >
             ← Quay lại

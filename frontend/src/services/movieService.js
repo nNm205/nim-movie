@@ -10,6 +10,18 @@ const handleError = (error, fallbackMessage) => {
 };
 
 export const movieService = {
+  async getMovies(page = 1, sort_by = "popularity.desc") {
+    try {
+      const response = await api.get(API_ENDPOINTS.GET_MOVIES, {
+        params: { page, sort_by },
+      });
+
+      return response.data;
+    } catch (error) {
+      handleError(error, "Failed to fetch movies");
+    }
+  },
+
   async getTrending(page = 1, timeWindow = "week") {
     try {
       const response = await api.get(API_ENDPOINTS.GET_TRENDING, {

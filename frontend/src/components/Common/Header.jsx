@@ -81,19 +81,19 @@ const Header = () => {
             Danh sách phim
           </Link>
           <Link
-            to="/trending"
+            to="/movies/trending"
             className="px-4 py-2 rounded-lg text-zinc-300 hover:text-white hover:bg-zinc-800/50 transition-all duration-200 font-medium"
           >
             Phim Xu hướng
           </Link>
           <Link
-            to="/popular"
+            to="/movies/popular"
             className="px-4 py-2 rounded-lg text-zinc-300 hover:text-white hover:bg-zinc-800/50 transition-all duration-200 font-medium"
           >
             Phim phổ biến
           </Link>
           <Link
-            to="/top-rated"
+            to="/movies/top-rated"
             className="px-4 py-2 rounded-lg text-zinc-300 hover:text-white hover:bg-zinc-800/50 transition-all duration-200 font-medium"
           >
             Phim xếp hạng cao
@@ -312,25 +312,25 @@ const Header = () => {
               Danh sách phim
             </Link>
             <Link
-              to="/trending"
+              to="/movies/trending"
               onClick={() => setIsMenuOpen(false)}
               className="px-4 py-3 rounded-lg text-zinc-300 hover:text-white hover:bg-zinc-800/50 transition-all duration-200 font-medium"
             >
               Xu hướng
             </Link>
             <Link
-              to="/new"
+              to="/movies/popular"
               onClick={() => setIsMenuOpen(false)}
               className="px-4 py-3 rounded-lg text-zinc-300 hover:text-white hover:bg-zinc-800/50 transition-all duration-200 font-medium"
             >
-              Phim mới
+              Phim phổ biến
             </Link>
             <Link
-              to="/category"
+              to="/movies/top-rated"
               onClick={() => setIsMenuOpen(false)}
               className="px-4 py-3 rounded-lg text-zinc-300 hover:text-white hover:bg-zinc-800/50 transition-all duration-200 font-medium"
             >
-              Thể loại
+              Phim xếp hạng cao
             </Link>
             <Link
               to="/watchlist"
