@@ -63,11 +63,17 @@ def search(
 )
 def discover_movies(
     page: int = Query(1, ge=1),
-    sort_by: str = Query("popularity.desc")
+    sort_by: str = Query("popularity.desc"),
+    genre_id: int | None = Query(None),
+    year: int | None = Query(None),
+    vote_average_gte: float | None = Query(None) 
 ):
     return get_discover_movies(
         page=page,
-        sort_by=sort_by
+        sort_by=sort_by,
+        genre_id=genre_id,
+        year=year,
+        vote_average_gte=vote_average_gte
     )
 
 @router.get(

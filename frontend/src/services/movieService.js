@@ -10,10 +10,16 @@ const handleError = (error, fallbackMessage) => {
 };
 
 export const movieService = {
-  async getMovies(page = 1, sort_by = "popularity.desc") {
+  async getMovies(filters = {}) {
     try {
       const response = await api.get(API_ENDPOINTS.GET_MOVIES, {
-        params: { page, sort_by },
+        params: {
+          page: filters.page || 1,
+          sort_by: filters.sortBy || "popularity.desc",
+          ...(filters.genreId && { genre_id: filters.genreId }),
+          ...(filters.year && { year: filters.year }),
+          ...(filters.rating && { vote_average_gte: filters.rating }),
+        },
       });
 
       return response.data;

@@ -5,16 +5,30 @@ tmdb_client = TMDbClient()
 
 def get_discover_movies(
     page: int = 1,
-    sort_by: str = "popularity.desc"
+    sort_by: str = "popularity.desc",
+    genre_id: int | None = None,
+    year: int | None = None,
+    vote_average_gte: float | None = None 
 ): 
-    logger.info(f"Discover movies | page={page} | sort_by={sort_by}")
+    logger.info(f"Discover movies | page={page}")
+
+    params={
+        "page": page,
+        "sort_by": sort_by 
+    }
+    
+    if genre_id: 
+        params["with_genres"] = genre_id
+
+    if year: 
+        params["year"] = year 
+
+    if vote_average_gte:
+        params["vote_average.gte"] = vote_average_gte 
 
     data = tmdb_client.get(
         "/discover/movie", 
-        params={
-            "page": page,
-            "sort_by": sort_by 
-        }
+        params=params
     )
 
     return {

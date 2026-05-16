@@ -27,8 +27,52 @@ export const API_ENDPOINTS = {
 };
 
 export const SORT_OPTIONS = [
-  { value: "trending", label: "Trending" },
-  { value: "newest", label: "Newest" },
-  { value: "top-rated", label: "Top Rated" },
-  { value: "popular", label: "Popular" },
+  {
+    value: "popularity.desc",
+    label: "Phổ biến nhất",
+  },
+  {
+    value: "vote_average.desc",
+    label: "Đánh giá cao",
+  },
+  {
+    value: "primary_release_date.desc",
+    label: "Mới phát hành",
+  },
+  {
+    value: "revenue.desc",
+    label: "Doanh thu cao",
+  },
+  {
+    value: "original_title.asc",
+    label: "Tên A-Z",
+  },
 ];
+
+export const RATING_OPTIONS = [
+  {
+    value: "",
+    label: "Tất cả đánh giá",
+  },
+  {
+    value: 5,
+    label: "5+ ⭐",
+  },
+  {
+    value: 6,
+    label: "6+ ⭐",
+  },
+  {
+    value: 7,
+    label: "7+ ⭐",
+  },
+  {
+    value: 8,
+    label: "8+ ⭐",
+  },
+];
+
+export const YEAR_OPTIONS = Array.from(
+  { length: 30 },
+  (_, index) => new Date().getFullYear() - index,
+);
