@@ -12,6 +12,8 @@ const MovieListPage = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [title, setTitle] = useState("");
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -23,22 +25,22 @@ const MovieListPage = () => {
         switch (location.pathname) {
           case "/movies":
             setTitle("Danh sách phim");
-            response = await movieService.getMovies();
+            response = await movieService.getMovies(page);
             break;
 
           case "/movies/trending":
             setTitle("Phim Xu Hướng");
-            response = await movieService.getTrending();
+            response = await movieService.getTrending(page);
             break;
 
           case "/movies/popular":
             setTitle("Phim Phổ Biến");
-            response = await movieService.getPopular();
+            response = await movieService.getPopular(page);
             break;
 
           case "/movies/top-rated":
             setTitle("Phim Xếp Hạng Cao");
-            response = await movieService.getTopRated();
+            response = await movieService.getTopRated(page);
             break;
 
           default:
@@ -46,6 +48,7 @@ const MovieListPage = () => {
         }
 
         setMovies(response.items || []);
+        setTotalPages(response.totalPages || 1);
       } catch (error) {
         console.error("Error fetching movies:", error);
       } finally {
@@ -54,7 +57,7 @@ const MovieListPage = () => {
     };
 
     fetchMovies();
-  }, [location.pathname, genreId]);
+  }, [location.pathname, genreId, page]);
 
   return (
     <Layout>
@@ -62,7 +65,29 @@ const MovieListPage = () => {
         <div className="max-w-screen-2xl mx-auto">
           <h1 className="text-4xl font-bold mb-10">{title}</h1>
 
-          <MovieCarousel title="" movies={movies} loading={loading} />
+          <MovieCarousel movies={movies} loading={loading} />
+
+          <div className="flex items-center justify-center gap-4 mt-10">
+            <button
+              disabled={page === 1}
+              onClick={() => setPage((prev) => prev - 1)}
+              className="px-4 py-2 rounded bg-zinc-800 text-white disabled:opacity-50"
+            >
+              Trang trước
+            </button>
+
+            <span className="text-zinc-400">
+              Trang {page} / {totalPages}
+            </span>
+
+            <button
+              disabled={page === totalPages}
+              onClick={() => setPage((prev) => prev + 1)}
+              className="px-4 py-2 rounded bg-zinc-800 text-white disabled:opacity-50"
+            >
+              Trang sau
+            </button>
+          </div>
         </div>
       </div>
     </Layout>

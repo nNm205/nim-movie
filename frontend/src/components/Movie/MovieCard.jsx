@@ -13,7 +13,7 @@ const MovieCard = ({ movie }) => {
         <img
           src={getPosterUrl(movie.poster_path)}
           alt={movie.title}
-          className="w-full h-72 object-cover group-hover:scale-110 transition duration-300"
+          className="w-full aspect-[2/3] object-cover group-hover:scale-110 transition duration-300"
         />
       </div>
 

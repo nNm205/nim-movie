@@ -57,18 +57,21 @@ const HomePage = () => {
               title="Trending Now"
               movies={trendingMovies}
               loading={loading}
+              viewMoreLink="/movies/trending"
             />
 
             <MovieCarousel
               title="Popular Movies"
               movies={popularMovies}
               loading={loading}
+              viewMoreLink="/movies/popular"
             />
 
             <MovieCarousel
               title="Top Rated"
               movies={topRatedMovies}
               loading={loading}
+              viewMoreLink="/movies/top-rated"
             />
           </section>
         </div>
