@@ -72,7 +72,7 @@ const WatchPage = () => {
             <div className="relative w-full aspect-video bg-black rounded-xl overflow-hidden shadow-2xl">
               <iframe
                 className="w-full h-full"
-                src={`https://vidsrc.icu/embed/movie/${id}`}
+                src={`https://vidsrcme.ru/embed/movie/${id}`}
                 allowFullScreen
                 allow="autoplay"
                 scrolling="no"
