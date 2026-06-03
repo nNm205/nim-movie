@@ -3,17 +3,14 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import text 
 from app.database.session import engine
 from app.core.logger import logger
-
+from app.config import settings 
 from app.api.v1.router import api_router
 
 app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000",
-        "http://127.0.0.1:3000",
-    ],
+    allow_origins=["https://nim-movie.vercel.app/"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
