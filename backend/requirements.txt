@@ -59,3 +59,6 @@ groq>=0.9
 # flake8
 # mypy
 # isort
+
+# Logging 
+loguru
